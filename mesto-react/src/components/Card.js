@@ -1,12 +1,12 @@
 function Card(props) {
 
-  function handleClick() {
+  function handleCardClick() {
     props.onCardClick(props.card);
   }
 
   return(
     <li className="element">
-      <img onClick={handleClick} src={props.img} alt={props.img} className="element__image"/>
+      <img onClick={handleCardClick} src={props.img} alt={props.img} className="element__image"/>
       <div className="element__bottom">
         <h2 className="element__text">{props.name}</h2>
         <div className="element__like-container">

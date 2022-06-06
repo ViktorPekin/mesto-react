@@ -6,44 +6,40 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function App() {
-  const [selectedCard, setSelectedCard] = useState();
+  const [selectedCard, setSelectedCard] = useState([]);
   const [isEditProfilePopupOpen , setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
-  function handleCardClick() {
-
-  }
-/*   useEffect(() => {
-    function closeAllPopups(evt) {
-      setIsEditProfilePopupOpen();
-      setIsAddPlacePopupOpen();
-      setIsEditAvatarPopupOpen();
-      console.log('1')
-    }
-
+   useEffect(() => {
     document.addEventListener('keydown', (evt) => {
       if (evt.key === 'Escape') {
-        closeAllPopups()
+        closeAllPopups();
+      }
+    });
+
+    document.addEventListener('mousedown', (evt) => {
+      if(evt.target.classList.contains('popup')) {
+        closeAllPopups();
       }
     });
 
     return () => {
       document.removeEventListener('keydown', (evt) => {
         if (evt.key === 'Escape') {
-          closeAllPopups()
+          closeAllPopups();
         }
       });
-    }
-  }) */
-   function closeAllPopups() {
+    };
+  });
+
+
+  function closeAllPopups() {
     setIsEditProfilePopupOpen();
     setIsAddPlacePopupOpen();
     setIsEditAvatarPopupOpen();
-    console.log('1')
+    setSelectedCard([]);
   }
-
-
 
   return (
     <div className="page">
@@ -53,6 +49,7 @@ function App() {
           onEditProfile={setIsEditProfilePopupOpen}
           onAddPlace={setIsAddPlacePopupOpen}
           onEditAvatar={setIsEditAvatarPopupOpen}
+          onCardClick={setSelectedCard}
         />
         <Footer />
         <PopupWithForm
@@ -124,6 +121,7 @@ function App() {
         />
         <ImagePopup
           isOpen={true}
+          onClose={closeAllPopups}
           card={selectedCard}
         />
       </div>
