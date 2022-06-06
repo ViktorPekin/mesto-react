@@ -1,18 +1,18 @@
 import React, {useEffect, useState } from 'react';
-import {api} from '../utils/Api'
+import {api} from '../utils/api'
 import Card from '../components/Card'
 
 function Main(props) {
-  const [userName, setUserName] = useState();
-  const [userDescription, setUserDescription] = useState();
-  const [userAvatar, setUserAvatar] = useState();
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api.getInitialProfile().then((res) => {
-      setUserName(res.name)
-      setUserDescription(res.about)
-      setUserAvatar(res.avatar)
+      setUserName(res.name);
+      setUserDescription(res.about);
+      setUserAvatar(res.avatar);
     });
   }, []);
 

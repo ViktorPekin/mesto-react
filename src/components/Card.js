@@ -14,7 +14,7 @@ function Card(props) {
           <p className="element__like-amount">{props.like}</p>
         </div>
       </div>
-      <button type="button" className="element__delite"></button>
+      <button type="button" className="element__delete"></button>
     </li>
   )
 }

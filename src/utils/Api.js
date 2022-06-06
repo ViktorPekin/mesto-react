@@ -44,7 +44,7 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  deliteCard(id) {
+  deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this._header
@@ -58,7 +58,7 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  deliteLike(id) {
+  deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: this._header
