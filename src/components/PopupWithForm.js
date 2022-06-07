@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 function PopupWithForm(props) {
 
     useEffect(() => {
-      console.log('1');
       function closeOnDelite(evt) {
         if (evt.key === 'Escape') {
           props.onClose();
@@ -24,7 +23,7 @@ function PopupWithForm(props) {
           closeOnDelite(evt);
         });
       };
-  });
+  },[]);
 
   return(
     <section className={`popup popup-${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
