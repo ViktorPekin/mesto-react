@@ -1,20 +1,31 @@
+import React, {useContext} from 'react';
+import {CurrentUserContext} from '../contexts/CurrentUserContext';
+
 function Card(props) {
+  const currentUser = useContext(CurrentUserContext);
+
+  const isOwn = props.card.owner._id === currentUser._id;
+  const isLiked = props.card.likes.some(i => i._id === currentUser._id);
 
   function handleCardClick() {
     props.onCardClick(props.card);
   }
 
+  function toggleLike() {
+    props.onCardLike(props.card)
+  }
+
   return(
     <li className="element">
-      <img onClick={handleCardClick} src={props.img} alt={props.img} className="element__image"/>
+      <img onClick={handleCardClick} src={props.card.link} alt={props.card.name} className="element__image"/>
       <div className="element__bottom">
-        <h2 className="element__text">{props.name}</h2>
+        <h2 className="element__text">{props.card.name}</h2>
         <div className="element__like-container">
-          <button type="button" className="element__like"></button>
-          <p className="element__like-amount">{props.like}</p>
+          <button onClick={toggleLike} type="button" className={`element__like ${isLiked ? 'element__like_active': ''}`}></button>
+          <p className="element__like-amount">{props.card.likes.length}</p>
         </div>
       </div>
-      <button type="button" className="element__delete"></button>
+      <button type="button" className={`element__delete ${!isOwn ? 'element__delete_hidden' : ''}`}></button>
     </li>
   )
 }
