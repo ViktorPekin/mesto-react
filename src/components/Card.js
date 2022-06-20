@@ -12,7 +12,11 @@ function Card(props) {
   }
 
   function toggleLike() {
-    props.onCardLike(props.card)
+    props.onCardLike(props.card);
+  }
+
+  function deleteCard() {
+    props.onCardDelete(props.card);
   }
 
   return(
@@ -25,7 +29,7 @@ function Card(props) {
           <p className="element__like-amount">{props.card.likes.length}</p>
         </div>
       </div>
-      <button type="button" className={`element__delete ${!isOwn ? 'element__delete_hidden' : ''}`}></button>
+      <button onClick={deleteCard} type="button" className={`element__delete ${!isOwn ? 'element__delete_hidden' : ''}`}></button>
     </li>
   )
 }
