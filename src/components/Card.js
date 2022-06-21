@@ -25,11 +25,11 @@ function Card(props) {
       <div className="element__bottom">
         <h2 className="element__text">{props.card.name}</h2>
         <div className="element__like-container">
-          <button onClick={toggleLike} type="button" className={`element__like ${isLiked ? 'element__like_active': ''}`}></button>
+          <button onClick={toggleLike} type="button" className={`element__like ${isLiked && 'element__like_active'}`}></button>
           <p className="element__like-amount">{props.card.likes.length}</p>
         </div>
       </div>
-      <button onClick={deleteCard} type="button" className={`element__delete ${!isOwn ? 'element__delete_hidden' : ''}`}></button>
+      <button onClick={deleteCard} type="button" className={`element__delete ${!isOwn && 'element__delete_hidden'}`}></button>
     </li>
   )
 }

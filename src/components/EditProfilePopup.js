@@ -39,12 +39,12 @@ function EditProfilePopup(props) {
     children={
       <>
         <div className="popup__input-container">
-          <input onChange={handleName} value={name} className="popup__input popup__input_content_name" id="name-input" type="text" placeholder="Имя"
+          <input onChange={handleName} value={name || ''} className="popup__input popup__input_content_name" id="name-input" type="text" placeholder="Имя"
           minLength="2" maxLength="40" name="name"  required/>
           <span className="popup__input-error name-input-error"></span>
         </div>
         <div className="popup__input-container">
-          <input onChange={handleDescription} value={description} className="popup__input popup__input_content_sub-name" id="sub-name-input" type="text"
+          <input onChange={handleDescription} value={description || ''} className="popup__input popup__input_content_sub-name" id="sub-name-input" type="text"
           placeholder="Профессиональная деятельность" minLength="2" maxLength="200" name="subName" required/>
           <span className="popup__input-error sub-name-input-error"></span>
         </div>

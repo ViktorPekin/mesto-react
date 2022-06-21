@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
@@ -21,12 +21,13 @@ function App() {
   useEffect(() => {
     api.getInitialCard().then((res) => {
       setCards(res);
+    }).catch((err) => {
+      console.log(err);
     });
-  }, []);
-
-  useEffect(() => {
     api.getInitialProfile().then((res) => {
       setCurrentUser(res);
+    }).catch((err) => {
+      console.log(err);
     });
   }, []);
 
@@ -34,12 +35,16 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id).then(() => {
       setCards((state) => state.filter((c) => c._id !== card._id));
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -54,6 +59,8 @@ function App() {
     api.patchProfile(value).then((res) => {
       setCurrentUser(res);
       closeAllPopups();
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -61,6 +68,8 @@ function App() {
     api.patchAvatar(value.avatar).then((res) => {
       setCurrentUser(res);
       closeAllPopups();
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
@@ -68,6 +77,8 @@ function App() {
     api.addNewCard(value).then((res) => {
       setCards([res, ...cards]);
       closeAllPopups();
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
