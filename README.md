@@ -12,4 +12,4 @@ Html / Css / БЭМ / БЭМ Nested / Адаптивная верска / JavaSc
 
 **GitHub Pages**
 
-https://viktorpekin.github.io/mesto/
+https://viktorpekin.github.io/mesto-react/
